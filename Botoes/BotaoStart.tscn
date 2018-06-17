@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Botoes/Botao.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Art/start.png" type="Texture" id=2]
+[ext_resource path="res://Botoes/BotaoStart.gd" type="Script" id=2]
+[ext_resource path="res://Art/start.png" type="Texture" id=3]
 
 [node name="BotaoStart" index="0" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 
 light_mask = 0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Light2D" parent="." index="1"]

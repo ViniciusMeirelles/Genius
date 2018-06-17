@@ -1,31 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Genius.gd" type="Script" id=1]
-[ext_resource path="res://Art/background.png" type="Texture" id=2]
-[ext_resource path="res://Botoes/BotaoCor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Art/blue-button.png" type="Texture" id=4]
-[ext_resource path="res://Art/red-button.png" type="Texture" id=5]
-[ext_resource path="res://Art/yellow-button.png" type="Texture" id=6]
-[ext_resource path="res://Art/green-button.png" type="Texture" id=7]
-[ext_resource path="res://Botoes/BotaoStart.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sequencia/Sequencia.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/background.png" type="Texture" id=3]
+[ext_resource path="res://Botoes/BotaoCor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/blue-button.png" type="Texture" id=5]
+[ext_resource path="res://Art/red-button.png" type="Texture" id=6]
+[ext_resource path="res://Art/yellow-button.png" type="Texture" id=7]
+[ext_resource path="res://Art/green-button.png" type="Texture" id=8]
+[ext_resource path="res://Botoes/BotaoStart.tscn" type="PackedScene" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
 
 [node name="Genius" type="Node" index="0"]
 
 script = ExtResource( 1 )
+tempo_espera = 1.5
 
-[node name="Background" type="Sprite" parent="." index="0"]
+[node name="Sequencia" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="Background" type="Sprite" parent="." index="1"]
 
 position = Vector2( 540, 960 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="BotaoAzul" parent="." index="1" instance=ExtResource( 3 )]
+[node name="BotaoAzul" parent="." index="2" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 
 [node name="Sprite" parent="BotaoAzul" index="0"]
 
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Light2D" parent="BotaoAzul" index="1"]
 
@@ -36,13 +41,13 @@ position = Vector2( 800, 1250 )
 position = Vector2( 440, 840 )
 polygon = PoolVector2Array( 220, 150, 600, 150, 560, 350, 360, 570, 130, 620, 130, 240 )
 
-[node name="BotaoVermelho" parent="." index="2" instance=ExtResource( 3 )]
+[node name="BotaoVermelho" parent="." index="3" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 
 [node name="Sprite" parent="BotaoVermelho" index="0"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Light2D" parent="BotaoVermelho" index="1"]
 
@@ -57,13 +62,13 @@ position = Vector2( 330, 1180 )
 
 polygon = PoolVector2Array( 13, 132, 393, 132, 483, 222, 483, 602, 253, 552, 63, 342 )
 
-[node name="BotaoAmarelo" parent="." index="3" instance=ExtResource( 3 )]
+[node name="BotaoAmarelo" parent="." index="4" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 
 [node name="Sprite" parent="BotaoAmarelo" index="0"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="Light2D" parent="BotaoAmarelo" index="1"]
 
@@ -79,13 +84,13 @@ position = Vector2( 740, 710 )
 
 polygon = PoolVector2Array( 133, 72, 353, 122, 553, 322, 603, 542, 223, 542, 133, 452 )
 
-[node name="BotaoVerde" parent="." index="4" instance=ExtResource( 3 )]
+[node name="BotaoVerde" parent="." index="5" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 
 [node name="Sprite" parent="BotaoVerde" index="0"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="Light2D" parent="BotaoVerde" index="1"]
 
@@ -100,7 +105,24 @@ position = Vector2( 370, 740 )
 
 polygon = PoolVector2Array( 223, 92, 443, 42, 443, 422, 353, 502, -27, 512, 33, 282 )
 
-[node name="BotaoStart" parent="." index="5" instance=ExtResource( 8 )]
+[node name="BotaoStart" parent="." index="6" instance=ExtResource( 9 )]
+
+[node name="TelaDerrota" type="Sprite" parent="." index="7"]
+
+visible = false
+position = Vector2( 560, 930 )
+scale = Vector2( 20.3438, 20.3438 )
+texture = ExtResource( 10 )
+
+[connection signal="botaoPressionado" from="BotaoAzul" to="." method="botaoAzulPressionado"]
+
+[connection signal="botaoPressionado" from="BotaoVermelho" to="." method="botaoVermelhoPressionado"]
+
+[connection signal="botaoPressionado" from="BotaoAmarelo" to="." method="botaoAmareloPressionado"]
+
+[connection signal="botaoPressionado" from="BotaoVerde" to="." method="botaoVerdePressionado"]
+
+[connection signal="botaoPressionado" from="BotaoStart" to="." method="comecaJogo"]
 
 
 [editable path="BotaoAzul"]

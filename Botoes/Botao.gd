@@ -2,10 +2,14 @@ extends Node
 
 onready var luz = get_node("Light2D")
 onready var timer_luz = get_node("Timer_luz")
+onready var genius = get_parent()
 var mouse_no_botao = false
+
+signal botaoPressionado
 
 
 func _ready():
+	connect("botaoPressionado", self, "signal_handler")
 	set_process_input(true)
 
 func _input(event):
@@ -13,7 +17,8 @@ func _input(event):
 		pressionaBotao()
 
 func pressionaBotao():
-	if mouse_no_botao:
+	if mouse_no_botao and !genius.getEstado()=="mostrandoSeq":
+		emit_signal("botaoPressionado")
 		ligaBotao()
 
 
