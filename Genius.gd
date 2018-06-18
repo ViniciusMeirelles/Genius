@@ -11,6 +11,7 @@ var numJogada = 0
 export var tempo_espera = 1.5
 
 func _ready():
+	randomize()
 	set_process(false)
 
 func comecaJogo():

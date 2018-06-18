@@ -14,7 +14,7 @@ func geraSequencia(jogada):
 		geraNovoBotaoSeq()
 
 func geraNovoBotaoSeq():
-	var num_um_a_quatro = randi()%5+1
+	var num_um_a_quatro = randi()%4+1
 	var botao_gerado = ""
 	
 	if num_um_a_quatro == 1:
