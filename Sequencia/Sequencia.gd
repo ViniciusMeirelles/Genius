@@ -1,5 +1,6 @@
 extends Node
 
+onready var genius = get_parent()
 onready var botaoAzul = get_parent().get_node("BotaoAzul")
 onready var botaoVermelho = get_parent().get_node("BotaoVermelho")
 onready var botaoAmarelo = get_parent().get_node("BotaoAmarelo")
@@ -29,7 +30,6 @@ func geraNovoBotaoSeq():
 
 func tocaSequencia():
 	for i in sequencia:
-		
 		timer.start()
 		yield(timer, "timeout")
 		
@@ -41,6 +41,7 @@ func tocaSequencia():
 			botaoAmarelo.ligaBotao()
 		elif i == "botaoVerde":
 			botaoVerde.ligaBotao()
+	genius.comecaJogo()
 
 func getTamSeq():
 	return sequencia.size()

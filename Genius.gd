@@ -26,9 +26,8 @@ func controlaJogo():
 		estado = "mostrandoSeq"
 		sequencia.geraSequencia(numJogada)
 		sequencia.tocaSequencia()
-		set_process(true)
 	
-	if estado=="mostrandoSeq":
+	elif estado=="mostrandoSeq":
 		set_process(false)
 		estado = "testandoSeq"
 
