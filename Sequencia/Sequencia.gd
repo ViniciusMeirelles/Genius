@@ -6,12 +6,20 @@ onready var botaoVermelho = get_parent().get_node("BotaoVermelho")
 onready var botaoAmarelo = get_parent().get_node("BotaoAmarelo")
 onready var botaoVerde = get_parent().get_node("BotaoVerde")
 onready var timer = get_node("Timer_sequencia")
+onready var tempoApertarBotao = get_node("TempoApertarBotao")
 
-var sequencia = Array()
+var ultimaSequencia
+var sequenciaAtual
+
+func _ready():
+	ultimaSequencia = Array()
+	sequenciaAtual = Array()
 
 func geraSequencia(jogada):
-	for i in jogada:
-		geraNovoBotaoSeq()
+	tempoApertarBotao.stop()
+	sequenciaAtual = ultimaSequencia.duplicate()
+	sequenciaAtual.push_back(geraNovoBotaoSeq())
+	ultimaSequencia = sequenciaAtual.duplicate()
 
 func geraNovoBotaoSeq():
 	var num_um_a_quatro = randi()%4+1
@@ -26,10 +34,10 @@ func geraNovoBotaoSeq():
 	elif num_um_a_quatro == 4:
 		botao_gerado = "botaoVerde"
 	
-	sequencia.push_back(botao_gerado)
+	return botao_gerado
 
 func tocaSequencia():
-	for i in sequencia:
+	for i in sequenciaAtual:
 		timer.start()
 		yield(timer, "timeout")
 		
@@ -44,9 +52,13 @@ func tocaSequencia():
 	genius.comecaJogo()
 
 func getTamSeq():
-	return sequencia.size()
+	return sequenciaAtual.size()
 
 func botaoEstaCorreto(botao):
-	if botao == sequencia.pop_front():
+	resetTimerApertarBotao()
+	if botao == sequenciaAtual.pop_front():
 		return true
 	else:	return false
+
+func resetTimerApertarBotao():
+	tempoApertarBotao.start()

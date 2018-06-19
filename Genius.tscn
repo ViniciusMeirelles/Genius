@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Genius.gd" type="Script" id=1]
 [ext_resource path="res://Sequencia/Sequencia.tscn" type="PackedScene" id=2]
@@ -9,16 +9,26 @@
 [ext_resource path="res://Art/yellow-button.png" type="Texture" id=7]
 [ext_resource path="res://Art/green-button.png" type="Texture" id=8]
 [ext_resource path="res://Botoes/BotaoStart.tscn" type="PackedScene" id=9]
-[ext_resource path="res://icon.png" type="Texture" id=10]
-[ext_resource path="res://teste.gd" type="Script" id=11]
-[ext_resource path="res://cour.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://teste.gd" type="Script" id=10]
+[ext_resource path="res://cour.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Pontos/Pontos.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Art/defeat.png" type="Texture" id=13]
+[ext_resource path="res://Botoes/Botao.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 25
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 12 )
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 80
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Genius" type="Node" index="0"]
@@ -27,6 +37,8 @@ script = ExtResource( 1 )
 tempo_espera = 1.5
 
 [node name="Sequencia" parent="." index="0" instance=ExtResource( 2 )]
+
+editor/display_folded = true
 
 [node name="Background" type="Sprite" parent="." index="1"]
 
@@ -117,16 +129,10 @@ polygon = PoolVector2Array( 223, 92, 443, 42, 443, 422, 353, 502, -27, 512, 33, 
 
 [node name="BotaoStart" parent="." index="6" instance=ExtResource( 9 )]
 
-[node name="TelaDerrota" type="Sprite" parent="." index="7"]
+[node name="teste" type="Node" parent="." index="7"]
 
-visible = false
-position = Vector2( 560, 930 )
-scale = Vector2( 20.3438, 20.3438 )
-texture = ExtResource( 10 )
-
-[node name="teste" type="Node" parent="." index="8"]
-
-script = ExtResource( 11 )
+editor/display_folded = true
+script = ExtResource( 10 )
 
 [node name="DEBUG TEXT" type="Label" parent="teste" index="0"]
 
@@ -151,6 +157,64 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
+[node name="Pontos" parent="." index="8" instance=ExtResource( 12 )]
+
+[node name="TelaDerrota" type="Sprite" parent="." index="9"]
+
+visible = false
+position = Vector2( 560, 930 )
+texture = ExtResource( 13 )
+offset = Vector2( -20, 30 )
+
+[node name="PontuacaoFinal" type="Label" parent="TelaDerrota" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -17.0
+margin_top = 113.0
+margin_right = 529.0
+margin_bottom = 278.0
+rect_pivot_offset = Vector2( 131, 5 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
+text = "0"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="BotaoRecomecar" parent="TelaDerrota" index="1" instance=ExtResource( 14 )]
+
+editor/display_folded = true
+
+[node name="Sprite" parent="TelaDerrota/BotaoRecomecar" index="0"]
+
+visible = false
+
+[node name="Light2D" parent="TelaDerrota/BotaoRecomecar" index="1"]
+
+position = Vector2( 590, 1400 )
+texture_scale = 2.0
+energy = 0.5
+
+[node name="Area2D" parent="TelaDerrota/BotaoRecomecar" index="2"]
+
+editor/display_folded = false
+position = Vector2( 540, 1340 )
+
+[node name="CollisionPolygon2D" parent="TelaDerrota/BotaoRecomecar/Area2D" index="0"]
+
+polygon = PoolVector2Array( 303, 222, 383, 252, 383, 362, 303, 382, 223, 362, 223, 252 )
+
+[connection signal="timeout" from="Sequencia/TempoApertarBotao" to="." method="derrota"]
+
 [connection signal="botaoPressionado" from="BotaoAzul" to="." method="botaoAzulPressionado"]
 
 [connection signal="botaoPressionado" from="BotaoVermelho" to="." method="botaoVermelhoPressionado"]
@@ -161,8 +225,12 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="botaoPressionado" from="BotaoStart" to="." method="comecaJogo"]
 
+[connection signal="botaoPressionado" from="TelaDerrota/BotaoRecomecar" to="." method="botaoRecomecarPressionado"]
 
+
+[editable path="Sequencia"]
 [editable path="BotaoAzul"]
 [editable path="BotaoVermelho"]
 [editable path="BotaoAmarelo"]
 [editable path="BotaoVerde"]
+[editable path="TelaDerrota/BotaoRecomecar"]

@@ -2,7 +2,7 @@ extends Node
 
 onready var luz = get_node("Light2D")
 onready var timer_luz = get_node("Timer_luz")
-onready var genius = get_parent()
+onready var genius = self.owner
 var mouse_no_botao = false
 
 signal botaoPressionado
