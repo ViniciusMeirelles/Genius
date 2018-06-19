@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Botoes/Botao.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Botoes/BotaoDesliga.gd" type="Script" id=2]
+[ext_resource path="res://Art/exit.png" type="Texture" id=3]
+
+[node name="BotaoDesliga" index="0" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+
+texture = ExtResource( 3 )
+
+[node name="Light2D" parent="." index="1"]
+
+position = Vector2( 1059, 151 )
+texture_scale = 3.0
+
+[node name="Area2D" parent="." index="2"]
+
+editor/display_folded = false
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+
+position = Vector2( 708.346, -253.103 )
+polygon = PoolVector2Array( 250.702, 283.816, 300, 270, 350.702, 283.816, 350.702, 363.816, 300, 380, 250.702, 363.816 )
+
+[connection signal="botaoPressionado" from="." to="." method="encerra"]
+
+

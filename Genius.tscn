@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Genius.gd" type="Script" id=1]
 [ext_resource path="res://Sequencia/Sequencia.tscn" type="PackedScene" id=2]
@@ -9,26 +9,18 @@
 [ext_resource path="res://Art/yellow-button.png" type="Texture" id=7]
 [ext_resource path="res://Art/green-button.png" type="Texture" id=8]
 [ext_resource path="res://Botoes/BotaoStart.tscn" type="PackedScene" id=9]
-[ext_resource path="res://teste.gd" type="Script" id=10]
-[ext_resource path="res://cour.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://Pontos/Pontos.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Art/defeat.png" type="Texture" id=13]
-[ext_resource path="res://Botoes/Botao.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Pontos/Pontos.tscn" type="PackedScene" id=10]
+[ext_resource path="res://TelaDerrota/TelaDerrota.tscn" type="PackedScene" id=11]
+[ext_resource path="res://teste.gd" type="Script" id=12]
+[ext_resource path="res://cour.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Botoes/BotaoDesliga.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 25
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 11 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=2]
-
-size = 80
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 11 )
+font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Genius" type="Node" index="0"]
@@ -58,10 +50,14 @@ texture = ExtResource( 5 )
 
 position = Vector2( 800, 1250 )
 
+[node name="Area2D" parent="BotaoAzul" index="2"]
+
+editor/display_folded = false
+
 [node name="CollisionPolygon2D" parent="BotaoAzul/Area2D" index="0"]
 
-position = Vector2( 440, 840 )
-polygon = PoolVector2Array( 220, 150, 600, 150, 560, 350, 360, 570, 130, 620, 130, 240 )
+position = Vector2( 410, 830 )
+polygon = PoolVector2Array( 250, 160, 630, 160, 580, 380, 380, 580, 160, 630, 160, 250 )
 
 [node name="BotaoVermelho" parent="." index="3" instance=ExtResource( 4 )]
 
@@ -78,11 +74,10 @@ position = Vector2( 360, 1260 )
 [node name="Area2D" parent="BotaoVermelho" index="2"]
 
 editor/display_folded = false
-position = Vector2( 330, 1180 )
 
 [node name="CollisionPolygon2D" parent="BotaoVermelho/Area2D" index="0"]
 
-polygon = PoolVector2Array( 13, 132, 393, 132, 483, 222, 483, 602, 253, 552, 63, 342 )
+polygon = PoolVector2Array( 723, 1312, 813, 1402, 813, 1782, 593, 1732, 393, 1532, 343, 1312 )
 
 [node name="BotaoAmarelo" parent="." index="4" instance=ExtResource( 4 )]
 
@@ -100,11 +95,11 @@ energy = 1.4
 [node name="Area2D" parent="BotaoAmarelo" index="2"]
 
 editor/display_folded = false
-position = Vector2( 740, 710 )
 
 [node name="CollisionPolygon2D" parent="BotaoAmarelo/Area2D" index="0"]
 
-polygon = PoolVector2Array( 133, 72, 353, 122, 553, 322, 603, 542, 223, 542, 133, 452 )
+position = Vector2( 450, 410 )
+polygon = PoolVector2Array( 120, 50, 350, 100, 550, 320, 590, 520, 210, 520, 120, 430 )
 
 [node name="BotaoVerde" parent="." index="5" instance=ExtResource( 4 )]
 
@@ -121,18 +116,25 @@ position = Vector2( 380, 830 )
 [node name="Area2D" parent="BotaoVerde" index="2"]
 
 editor/display_folded = false
-position = Vector2( 370, 740 )
 
 [node name="CollisionPolygon2D" parent="BotaoVerde/Area2D" index="0"]
 
-polygon = PoolVector2Array( 223, 92, 443, 42, 443, 422, 353, 502, -27, 512, 33, 282 )
+position = Vector2( 40, 420 )
+polygon = PoolVector2Array( 50, 290, 260, 80, 470, 40, 470, 420, 380, 510, 0, 510 )
 
 [node name="BotaoStart" parent="." index="6" instance=ExtResource( 9 )]
 
-[node name="teste" type="Node" parent="." index="7"]
+[node name="Pontos" parent="." index="7" instance=ExtResource( 10 )]
+
+[node name="TelaDerrota" parent="." index="8" instance=ExtResource( 11 )]
 
 editor/display_folded = true
-script = ExtResource( 10 )
+visible = false
+
+[node name="teste" type="Node" parent="." index="9"]
+
+editor/display_folded = true
+script = ExtResource( 12 )
 
 [node name="DEBUG TEXT" type="Label" parent="teste" index="0"]
 
@@ -157,61 +159,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Pontos" parent="." index="8" instance=ExtResource( 12 )]
-
-[node name="TelaDerrota" type="Sprite" parent="." index="9"]
-
-visible = false
-position = Vector2( 560, 930 )
-texture = ExtResource( 13 )
-offset = Vector2( -20, 30 )
-
-[node name="PontuacaoFinal" type="Label" parent="TelaDerrota" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -17.0
-margin_top = 113.0
-margin_right = 529.0
-margin_bottom = 278.0
-rect_pivot_offset = Vector2( 131, 5 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
-text = "0"
-uppercase = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="BotaoRecomecar" parent="TelaDerrota" index="1" instance=ExtResource( 14 )]
-
-editor/display_folded = true
-
-[node name="Sprite" parent="TelaDerrota/BotaoRecomecar" index="0"]
-
-visible = false
-
-[node name="Light2D" parent="TelaDerrota/BotaoRecomecar" index="1"]
-
-position = Vector2( 590, 1400 )
-texture_scale = 2.0
-energy = 0.5
-
-[node name="Area2D" parent="TelaDerrota/BotaoRecomecar" index="2"]
-
-editor/display_folded = false
-position = Vector2( 540, 1340 )
-
-[node name="CollisionPolygon2D" parent="TelaDerrota/BotaoRecomecar/Area2D" index="0"]
-
-polygon = PoolVector2Array( 303, 222, 383, 252, 383, 362, 303, 382, 223, 362, 223, 252 )
+[node name="BotaoDesliga" parent="." index="10" instance=ExtResource( 14 )]
 
 [connection signal="timeout" from="Sequencia/TempoApertarBotao" to="." method="derrota"]
 
@@ -225,7 +173,7 @@ polygon = PoolVector2Array( 303, 222, 383, 252, 383, 362, 303, 382, 223, 362, 22
 
 [connection signal="botaoPressionado" from="BotaoStart" to="." method="comecaJogo"]
 
-[connection signal="botaoPressionado" from="TelaDerrota/BotaoRecomecar" to="." method="botaoRecomecarPressionado"]
+[connection signal="botaoPressionado" from="TelaDerrota/BotaoRecomecar" to="." method="RecomecarJogo"]
 
 
 [editable path="Sequencia"]
@@ -233,4 +181,4 @@ polygon = PoolVector2Array( 303, 222, 383, 252, 383, 362, 303, 382, 223, 362, 22
 [editable path="BotaoVermelho"]
 [editable path="BotaoAmarelo"]
 [editable path="BotaoVerde"]
-[editable path="TelaDerrota/BotaoRecomecar"]
+[editable path="TelaDerrota"]

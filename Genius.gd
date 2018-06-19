@@ -2,8 +2,8 @@ extends Node
 
 onready var sequencia = get_node("Sequencia")
 onready var telaDerrota = get_node("TelaDerrota")
-onready var pontuacaoFinalTexto = get_node("TelaDerrota/PontuacaoFinal")
 onready var pontos = get_node("Pontos")
+onready var botaoStart = get_node("BotaoStart")
 
 var estado #naoIniciado, mostrandoSeq, testandoSeq, terminado
 var numJogada
@@ -11,12 +11,14 @@ var numJogada
 export var tempo_espera = 1.5
 
 func _ready():
-	randomize()
 	set_process(false)
+	randomize()
 	estado = "naoIniciado" #naoIniciado, mostrandoSeq, testandoSeq, terminado
 	numJogada = 0
+	telaDerrota.esconder()
 
 func comecaJogo():
+		botaoStart.desativaBotao()
 		set_process(true)
 
 func _process(delta):
@@ -73,11 +75,10 @@ func botaoCorreto():
 func derrota():
 	if estado == "testandoSeq":
 		estado = "terminado"
-		telaDerrota.show()
-		pontuacaoFinalTexto.text = str(pontos.getPontos())
+		telaDerrota.mostrar(numJogada)
 
 func RecomecarJogo():
 	_ready()
 	sequencia._ready()
 	pontos._ready()
-	telaDerrota.hide()
+	botaoStart.ativaBotao()

@@ -1,6 +1,7 @@
 extends "res://Botoes/Botao.gd"
 
 func _ready():
+	ativaBotao()
 	set_process_input(true)
 
 func pressionaBotao():
