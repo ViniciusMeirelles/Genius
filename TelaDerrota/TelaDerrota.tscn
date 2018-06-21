@@ -1,17 +1,53 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/defeat.png" type="Texture" id=1]
 [ext_resource path="res://TelaDerrota/TelaDerrota.gd" type="Script" id=2]
 [ext_resource path="res://cour.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Botoes/BotaoStart.tscn" type="PackedScene" id=4]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 
 size = 80
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.835294, 0.835294, 0.835294, 0 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 60
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="TelaDerrota" type="Sprite" index="0"]
 
@@ -26,23 +62,24 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -17.0
-margin_top = 113.0
-margin_right = 529.0
-margin_bottom = 278.0
-rect_pivot_offset = Vector2( 131, 5 )
+margin_left = 19.0
+margin_top = 37.0
+margin_right = 565.0
+margin_bottom = 202.0
+rect_pivot_offset = Vector2( 171.658, -17.5121 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
 text = "0"
 uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="BotaoRecomecar" parent="." index="1" instance=ExtResource( 4 )]
 
@@ -64,6 +101,53 @@ energy = 0.01
 editor/display_folded = true
 position = Vector2( 540, 1320 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="BotaoRecomecar" index="4"]
+
+normal = null
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="NomeJogador" type="LineEdit" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -300.0
+margin_top = 184.0
+margin_right = 286.0
+margin_bottom = 286.0
+rect_pivot_offset = Vector2( 102.882, 63.5306 )
+rect_clip_content = false
+hint_tooltip = "Seu nome"
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
+text = "Seu nome"
+align = 1
+max_length = 9
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 1.0
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Hint", "Pause", "Placeholder", "Rect", "custom_fonts", "custom_styles" ]
+
+[connection signal="text_entered" from="NomeJogador" to="." method="nomeInserido"]
 
 
 [editable path="BotaoRecomecar"]

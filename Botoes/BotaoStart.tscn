@@ -4,8 +4,9 @@
 [ext_resource path="res://Botoes/BotaoStart.gd" type="Script" id=2]
 [ext_resource path="res://Art/start.png" type="Texture" id=3]
 
-[node name="BotaoStart" index="0" instance=ExtResource( 1 )]
+[node name="BotaoStart" instance=ExtResource( 1 )]
 
+pause_mode = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]

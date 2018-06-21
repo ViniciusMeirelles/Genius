@@ -2,6 +2,7 @@ extends Node
 
 onready var luz = get_node("Light2D")
 onready var timer_luz = get_node("Timer_luz")
+onready var som = get_node("AudioStreamPlayer")
 onready var colisor = get_node("Area2D")
 onready var sprite = get_node("Sprite")
 onready var genius = get_tree().get_root().get_node("Genius")
@@ -26,6 +27,7 @@ func pressionaBotao():
 
 
 func ligaBotao():
+	som.play()
 	luz.show()
 	timer_luz.start()
 

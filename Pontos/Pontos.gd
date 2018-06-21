@@ -7,26 +7,23 @@ onready var pontuacaoFinalTexto = get_node("TelaDerrota/PontuacaoFinal")
 export var textoHighScore = "High Score: "
 export var textoPontuacao = "Pontuação:  "
 
-var saveFile = File.new()
 var highScore
 var pontuacaoAtual
 
 func _ready():
 	highScore = 0
 	pontuacaoAtual = 0
-	carregaJogo()
 	atualizaTexto()
 
 
 func atualizaPontos(jogada):
 	pontuacaoAtual = jogada
-	verificaHighScore()
-	atualizaTexto()
+	verificaHighScore(pontuacaoAtual)
 
-func verificaHighScore():
-	if pontuacaoAtual > highScore:
-		highScore = pontuacaoAtual
-		salvaJogo()
+func verificaHighScore(pontuacao):
+	if pontuacao > highScore:
+		highScore = pontuacao
+	atualizaTexto()
 
 func atualizaTexto():
 	texto.text = textoHighScore + str(highScore)
@@ -34,14 +31,3 @@ func atualizaTexto():
 
 func getPontos():
 	return pontuacaoAtual
-
-
-func salvaJogo():
-	saveFile.open("user://save.save", File.WRITE)
-	saveFile.store_line(str(highScore))
-	saveFile.close()
-
-func carregaJogo():
-	saveFile.open("user://save.save", File.READ)
-	highScore = int(saveFile.get_line())
-	saveFile.close()

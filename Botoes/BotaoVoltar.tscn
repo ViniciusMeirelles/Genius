@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Botoes/Botao.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/go back button.png" type="Texture" id=2]
+
+[node name="BotaoVoltar" instance=ExtResource( 1 )]
+
+pause_mode = 0
+
+[node name="Sprite" parent="." index="0"]
+
+position = Vector2( 540, 1423.63 )
+texture = ExtResource( 2 )
+
+[node name="Light2D" parent="." index="1"]
+
+texture_scale = 20.0
+energy = 0.01
+
+[node name="Area2D" parent="." index="2"]
+
+position = Vector2( 538.381, 1785.43 )
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+
+polygon = PoolVector2Array( 232.123, 278.261, 302.103, 235.569, 378.685, 275.62, 377.805, 372.008, 307.384, 402.817, 226.841, 364.526 )
+
+

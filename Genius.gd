@@ -6,6 +6,7 @@ onready var pontos = get_node("Pontos")
 onready var botaoStart = get_node("BotaoStart")
 
 var estado #naoIniciado, mostrandoSeq, testandoSeq, terminado
+var buffer_estado # Usado quando o jogo é pausado
 var numJogada
 
 export var tempo_espera = 1.5
@@ -82,3 +83,12 @@ func RecomecarJogo():
 	sequencia._ready()
 	pontos._ready()
 	botaoStart.ativaBotao()
+
+func pausar():
+	set_process(false)
+	buffer_estado = estado
+	estado = "pausado"
+
+func retomar():
+	estado = buffer_estado
+	set_process(true)
