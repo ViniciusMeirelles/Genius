@@ -1,0 +1,355 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://TelaConfig/TelaConfig.gd" type="Script" id=1]
+[ext_resource path="res://Art/background.png" type="Texture" id=2]
+[ext_resource path="res://cour.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Art/red-button.png" type="Texture" id=4]
+[ext_resource path="res://Art/green-button.png" type="Texture" id=5]
+[ext_resource path="res://Art/yellow-button.png" type="Texture" id=6]
+[ext_resource path="res://Art/blue-button.png" type="Texture" id=7]
+[ext_resource path="res://Art/start.png" type="Texture" id=8]
+[ext_resource path="res://Botoes/BotaoVoltar.tscn" type="PackedScene" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 70
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0.117647 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="TelaConfig" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Fundo" type="Sprite" parent="." index="0" groups=[
+"ui_config",
+]]
+
+position = Vector2( 540, 960 )
+texture = ExtResource( 2 )
+
+[node name="Titulo" type="LineEdit" parent="." index="1" groups=[
+"ui_config",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 150.0
+margin_top = 50.0
+margin_right = 930.0
+margin_bottom = 108.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/read_only = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
+text = "Alterar sons"
+align = 1
+editable = false
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="IconeVerm" type="Sprite" parent="." index="2" groups=[
+"ui_config",
+]]
+
+position = Vector2( 230, 260 )
+scale = Vector2( 0.263021, 0.263021 )
+texture = ExtResource( 4 )
+
+[node name="CaminhoVerm" type="LineEdit" parent="." index="3" groups=[
+"ui_config",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 290.0
+margin_top = 300.0
+margin_right = 1030.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/read_only = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
+text = "Caminho"
+align = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="IconeVerd" type="Sprite" parent="." index="4" groups=[
+"ui_config",
+]]
+
+position = Vector2( 232.031, 712.5 )
+scale = Vector2( 0.263021, 0.263021 )
+texture = ExtResource( 5 )
+
+[node name="CaminhoVerd" type="LineEdit" parent="." index="5" groups=[
+"ui_config",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 294.0
+margin_top = 606.0
+margin_right = 1030.0
+margin_bottom = 666.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/read_only = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
+text = "Caminho"
+align = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="IconeAm" type="Sprite" parent="." index="6" groups=[
+"ui_config",
+]]
+
+position = Vector2( 102.031, 1032.5 )
+scale = Vector2( 0.263021, 0.263021 )
+texture = ExtResource( 6 )
+
+[node name="CaminhoAm" type="LineEdit" parent="." index="7" groups=[
+"ui_config",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 296.0
+margin_top = 929.0
+margin_right = 1030.0
+margin_bottom = 989.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/read_only = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
+text = "Caminho"
+align = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="IconeAz" type="Sprite" parent="." index="8" groups=[
+"ui_config",
+]]
+
+position = Vector2( 102.031, 1192.5 )
+scale = Vector2( 0.263021, 0.263021 )
+texture = ExtResource( 7 )
+
+[node name="CaminhoAz" type="LineEdit" parent="." index="9" groups=[
+"ui_config",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 298.0
+margin_top = 1242.0
+margin_right = 1030.0
+margin_bottom = 1302.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/read_only = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
+text = "Caminho"
+align = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="IconeStart" type="Sprite" parent="." index="10" groups=[
+"ui_config",
+]]
+
+position = Vector2( 173.75, 1580 )
+scale = Vector2( 0.729167, 0.729167 )
+texture = ExtResource( 8 )
+
+[node name="CaminhoStart" type="LineEdit" parent="." index="11" groups=[
+"ui_config",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 302.0
+margin_top = 1552.0
+margin_right = 1034.0
+margin_bottom = 1612.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/read_only = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.815686, 0.756863, 0.0941176, 1 )
+text = "Caminho"
+align = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="BotaoVoltar" parent="." index="12" instance=ExtResource( 9 )]
+
+[connection signal="text_entered" from="CaminhoVerm" to="." method="novoCaminhoVerm"]
+
+[connection signal="text_entered" from="CaminhoVerd" to="." method="novoCaminhoVerd"]
+
+[connection signal="text_entered" from="CaminhoAm" to="." method="novoCaminhoAm"]
+
+[connection signal="text_entered" from="CaminhoAz" to="." method="novoCaminhoAz"]
+
+[connection signal="text_entered" from="CaminhoStart" to="." method="novoCaminhoStart"]
+
+[connection signal="botaoPressionado" from="BotaoVoltar" to="." method="esconder"]
+
+

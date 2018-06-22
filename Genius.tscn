@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Genius.gd" type="Script" id=1]
 [ext_resource path="res://Sequencia/Sequencia.tscn" type="PackedScene" id=2]
@@ -21,6 +21,9 @@
 [ext_resource path="res://TelaHighScores/TelaHighScores.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Botoes/BotaoMostrarHighScores.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Botoes/BotaoDesliga.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Botoes/Volume.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Botoes/BotaoConfig.tscn" type="PackedScene" id=23]
+[ext_resource path="res://TelaConfig/TelaConfig.tscn" type="PackedScene" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -67,7 +70,7 @@ editor/display_folded = false
 position = Vector2( 410, 830 )
 polygon = PoolVector2Array( 250, 160, 630, 160, 580, 380, 380, 580, 160, 630, 160, 250 )
 
-[node name="AudioStreamPlayer" parent="BotaoAzul" index="5"]
+[node name="AudioStreamPlayer" parent="BotaoAzul" index="4"]
 
 stream = ExtResource( 6 )
 
@@ -91,7 +94,7 @@ editor/display_folded = false
 
 polygon = PoolVector2Array( 723, 1312, 813, 1402, 813, 1782, 593, 1732, 393, 1532, 343, 1312 )
 
-[node name="AudioStreamPlayer" parent="BotaoVermelho" index="5"]
+[node name="AudioStreamPlayer" parent="BotaoVermelho" index="4"]
 
 stream = ExtResource( 8 )
 
@@ -117,7 +120,7 @@ editor/display_folded = false
 position = Vector2( 450, 410 )
 polygon = PoolVector2Array( 120, 50, 350, 100, 550, 320, 590, 520, 210, 520, 120, 430 )
 
-[node name="AudioStreamPlayer" parent="BotaoAmarelo" index="5"]
+[node name="AudioStreamPlayer" parent="BotaoAmarelo" index="4"]
 
 stream = ExtResource( 10 )
 
@@ -142,7 +145,7 @@ editor/display_folded = false
 position = Vector2( 40, 420 )
 polygon = PoolVector2Array( 50, 290, 260, 80, 470, 40, 470, 420, 380, 510, 0, 510 )
 
-[node name="AudioStreamPlayer" parent="BotaoVerde" index="5"]
+[node name="AudioStreamPlayer" parent="BotaoVerde" index="4"]
 
 stream = ExtResource( 12 )
 
@@ -199,6 +202,18 @@ editor/display_folded = true
 
 [node name="BotaoDesliga" parent="." index="12" instance=ExtResource( 21 )]
 
+[node name="Volume" parent="." index="13" instance=ExtResource( 22 )]
+
+[node name="BotaoConfig" parent="." index="14" instance=ExtResource( 23 )]
+
+[node name="TelaConfig" parent="." index="15" instance=ExtResource( 24 )]
+
+editor/display_folded = true
+
+[node name="Fundo" parent="TelaConfig" index="0"]
+
+visible = false
+
 [connection signal="timeout" from="Sequencia/TempoApertarBotao" to="." method="derrota"]
 
 [connection signal="botaoPressionado" from="BotaoAzul" to="." method="botaoAzulPressionado"]
@@ -221,6 +236,8 @@ editor/display_folded = true
 
 [connection signal="botaoPressionado" from="BotaoMostrarHighScores" to="." method="pause"]
 
+[connection signal="botaoPressionado" from="BotaoConfig" to="TelaConfig" method="mostrar"]
+
 
 [editable path="Sequencia"]
 [editable path="BotaoAzul"]
@@ -231,3 +248,4 @@ editor/display_folded = true
 [editable path="TelaDerrota"]
 [editable path="TelaHighScores"]
 [editable path="BotaoMostrarHighScores"]
+[editable path="TelaConfig"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Botoes/Botao.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Botoes/BotaoMudo.gd" type="Script" id=2]
+[ext_resource path="res://Art/botao mudo.png" type="Texture" id=3]
+[ext_resource path="res://Art/botao mudo mudo.png" type="Texture" id=4]
+
+[node name="BotaoMudo" index="0" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+
+position = Vector2( 1139.54, 1078.45 )
+texture = ExtResource( 3 )
+
+[node name="Light2D" parent="." index="1"]
+
+texture_scale = 20.0
+energy = 0.01
+
+[node name="Area2D" parent="." index="2"]
+
+position = Vector2( 1112.62, 1212.62 )
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+
+position = Vector2( -305.205, -324.205 )
+polygon = PoolVector2Array( 309.155, 306.861, 331.208, 306.861, 344.44, 328.179, 329.003, 350.232, 304.745, 351.702, 292.983, 328.179 )
+
+[node name="mudo" type="Sprite" parent="." index="5"]
+
+visible = false
+position = Vector2( 1139.54, 1078.45 )
+texture = ExtResource( 4 )
+
+[connection signal="botaoPressionado" from="." to="." method="mudo"]
+
+

@@ -1,8 +1,6 @@
 extends Node
 
 onready var texto = get_node("Texto")
-onready var telaDerrota = get_node("TelaDerrota")
-onready var pontuacaoFinalTexto = get_node("TelaDerrota/PontuacaoFinal")
 
 export var textoHighScore = "High Score: "
 export var textoPontuacao = "Pontuação:  "

@@ -8,6 +8,7 @@ onready var sprite = get_node("Sprite")
 onready var genius = get_tree().get_root().get_node("Genius")
 
 var mouse_no_botao = false
+var buffer_volume = 0
 
 signal botaoPressionado
 
@@ -33,6 +34,18 @@ func ligaBotao():
 
 func desligaBotao():
 	luz.hide()
+
+func mute():
+	# unmute
+	if som.volume_db==-60:
+		som.volume_db = buffer_volume
+	# mute
+	else:
+		buffer_volume = som.volume_db
+		som.volume_db = -60
+
+func setVolume(volume):
+	som.volume_db = volume
 
 func mouse_entrou_botao():
 	mouse_no_botao = true
