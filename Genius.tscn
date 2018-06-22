@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Genius.gd" type="Script" id=1]
 [ext_resource path="res://Sequencia/Sequencia.tscn" type="PackedScene" id=2]
@@ -16,22 +16,12 @@
 [ext_resource path="res://Art/center_sond.wav" type="AudioStream" id=14]
 [ext_resource path="res://Pontos/Pontos.tscn" type="PackedScene" id=15]
 [ext_resource path="res://TelaDerrota/TelaDerrota.tscn" type="PackedScene" id=16]
-[ext_resource path="res://teste.gd" type="Script" id=17]
-[ext_resource path="res://cour.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://TelaHighScores/TelaHighScores.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Botoes/BotaoMostrarHighScores.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Botoes/BotaoDesliga.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Botoes/Volume.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Botoes/BotaoConfig.tscn" type="PackedScene" id=23]
-[ext_resource path="res://TelaConfig/TelaConfig.tscn" type="PackedScene" id=24]
-
-[sub_resource type="DynamicFont" id=1]
-
-size = 25
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 18 )
-_sections_unfolded = [ "Font", "Settings" ]
+[ext_resource path="res://TelaHighScores/TelaHighScores.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Botoes/BotaoMostrarHighScores.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Botoes/BotaoDesliga.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Botoes/Volume.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Botoes/BotaoConfig.tscn" type="PackedScene" id=21]
+[ext_resource path="res://TelaConfig/TelaConfig.tscn" type="PackedScene" id=22]
 
 [node name="Genius" type="Node" index="0"]
 
@@ -164,49 +154,21 @@ stream = ExtResource( 14 )
 editor/display_folded = true
 visible = false
 
-[node name="teste" type="Node" parent="." index="9"]
-
-editor/display_folded = true
-script = ExtResource( 17 )
-
-[node name="DEBUG TEXT" type="Label" parent="teste" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 50.0
-margin_top = 1500.0
-margin_right = 260.0
-margin_bottom = 1558.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-text = "DEBUG!"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="TelaHighScores" parent="." index="10" instance=ExtResource( 19 )]
+[node name="TelaHighScores" parent="." index="9" instance=ExtResource( 17 )]
 
 editor/display_folded = true
 
-[node name="BotaoMostrarHighScores" parent="." index="11" instance=ExtResource( 20 )]
+[node name="BotaoMostrarHighScores" parent="." index="10" instance=ExtResource( 18 )]
 
 editor/display_folded = true
 
-[node name="BotaoDesliga" parent="." index="12" instance=ExtResource( 21 )]
+[node name="BotaoDesliga" parent="." index="11" instance=ExtResource( 19 )]
 
-[node name="Volume" parent="." index="13" instance=ExtResource( 22 )]
+[node name="Volume" parent="." index="12" instance=ExtResource( 20 )]
 
-[node name="BotaoConfig" parent="." index="14" instance=ExtResource( 23 )]
+[node name="BotaoConfig" parent="." index="13" instance=ExtResource( 21 )]
 
-[node name="TelaConfig" parent="." index="15" instance=ExtResource( 24 )]
+[node name="TelaConfig" parent="." index="14" instance=ExtResource( 22 )]
 
 editor/display_folded = true
 
@@ -232,9 +194,9 @@ visible = false
 
 [connection signal="botaoPressionado" from="TelaHighScores/BotaoVoltar" to="BotaoMostrarHighScores" method="mostraBotao"]
 
-[connection signal="botaoPressionado" from="BotaoMostrarHighScores" to="TelaHighScores" method="mostrar"]
-
 [connection signal="botaoPressionado" from="BotaoMostrarHighScores" to="." method="pause"]
+
+[connection signal="botaoPressionado" from="BotaoMostrarHighScores" to="TelaHighScores" method="mostrar"]
 
 [connection signal="botaoPressionado" from="BotaoConfig" to="TelaConfig" method="mostrar"]
 
